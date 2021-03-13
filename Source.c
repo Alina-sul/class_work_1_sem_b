@@ -15,8 +15,10 @@ void main() {
 	print_arr(arr, 13);
 	rebuiled_array_min(arr, 13);
 
-	int arr[] = { 6 , 57 , 14 , 21 , 11 , 3, 22, 42 , 9 , 15 }; //EX2
+	int arr2[] = { 6 , 57 , 14 , 21 , 11 , 3, 22, 42 , 9 , 15 }; //EX2
+	print_arr(arr2, 10);
 
+	odd_and_even_arrays(arr2, 10);
 
 }
 
@@ -63,8 +65,32 @@ void odd_and_even_arrays(int* arr, int n)
 
 	int *odd_arr, *even_arr;
 	odd_arr = (int*)calloc(count_odd, sizeof(int));
+	even_arr = (int*)calloc(count_even, sizeof(int));
 
+	for (int i = 0, e = 0, o = 0; i < n; i++) {
 
+		if(arr[i] % 2 == 0) {
+			if (even_arr != NULL) {
+				even_arr[e] = arr[i];
+				e++;
+			}
+			
+		} else {
+			if (odd_arr != NULL) {
+				odd_arr[o] = arr[i];
+				o++;
+			}
+		}
+
+	}
+
+	printf("EVEN: \n");
+	print_arr(even_arr, count_even);
+	printf("ODD: \n");
+	print_arr(odd_arr, count_odd);
+
+	free(odd_arr);
+	free(even_arr);
 
 }
 
