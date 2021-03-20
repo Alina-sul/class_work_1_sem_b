@@ -3,4 +3,4 @@
 
 void lab1();
 
-#endif /*LAB1*/
+#endif 

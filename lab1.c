@@ -3,28 +3,28 @@
 #include <stdlib.h>
 
 void print_arr(int a[], int n);
-//EX1
+//Q1
 void rebuiled_array_min(int* arr, int n);
-//EX2
+//Q2
 void odd_and_even_arrays(int* arr, int n);
 
 void lab1() {
 
-	printf("************************ EX1: \n\n");
-	int arr[] = { 10, 10, 20, 30, 30, 30, 42, 42, 42, 51, 64, 64, 77 }; //EX1
+	printf("************************ Q1: \n\n");
+	int arr[] = { 10, 10, 20, 30, 30, 30, 42, 42, 42, 51, 64, 64, 77 }; //Q1
 
 	print_arr(arr, 13);
 	rebuiled_array_min(arr, 13);
 
-	printf("\n\n************************ EX2: \n\n");
-	int arr2[] = { 6 , 57 , 14 , 21 , 11 , 3, 22, 42 , 9 , 15 }; //EX2
+	printf("\n\n************************ Q2: \n\n");
+	int arr2[] = { 6 , 57 , 14 , 21 , 11 , 3, 22, 42 , 9 , 15 }; //Q2
 	print_arr(arr2, 10);
 
 	odd_and_even_arrays(arr2, 10);
 
 }
 
-//EX1
+//Q1
 void rebuiled_array_min(int* arr, int n)
 {
 	int count_unique = 0;
@@ -55,7 +55,7 @@ void rebuiled_array_min(int* arr, int n)
 	free(new_arr);
 
 }
-//EX2
+//Q2
 void odd_and_even_arrays(int* arr, int n)
 {
 	int count_odd = 0, count_even = 0;
