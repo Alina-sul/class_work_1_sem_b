@@ -1,4 +1,5 @@
 #include "lab1.h" 
+#include "helpers.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -97,11 +98,4 @@ void odd_and_even_arrays(int* arr, int n)
 
 }
 
-//Helper functions
-void print_arr(int a[], int n) {
 
-	for (int i = 0; i < n; i++) {
-		printf("%d, ", a[i]);
-	}
-	printf("\n");
-}
