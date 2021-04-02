@@ -33,28 +33,24 @@ void lab2() {
 	free(odd_array);
 	free(even_array);
 
-	//Q1
+
+	//Q2
 	printf("\n\n****************************** Q2: \n\n");
 
-	char a[6] = { 'a','B','C','e','F','g' };
-	char* lower_case = NULL; 
+	char arrQ2[6] = {'a','B','C','e','F','g'};
+	char* lower_case = NULL;
 	char* upper_case = NULL;
 	int lower_size = 0, upper_size = 0;
 
-	char arr[NUM];
-	printf("Enter array: ");
-	for (int i = 0; i < NUM; i++)
-		arr[i] = getchar();
 
-
-	split_by_uppercase(arr, NUM, &lower_case, &upper_case, &lower_size, &upper_size);
+	split_by_uppercase(arrQ2, 6, &lower_case, &upper_case, &lower_size, &upper_size);
 
 	if (lower_case != NULL && upper_case != NULL) {
 
 		printf("\nfirst (lower case) array: \n");
-		print_arr(lower_case, lower_size);
+		print_arr_char(lower_case, lower_size);
 		printf("\nsecond (upper case) array: \n");
-		print_arr(upper_case, upper_size);
+		print_arr_char(upper_case, upper_size);
 
 	};
 
@@ -90,22 +86,33 @@ int* even_odd(int* a, int n, int** a_odd, int* p_even_size, int* p_odd_size) {
 void split_by_uppercase(char* a, int n, char** lower_case, char** upper_case, int* lower_size, int* upper_size) {
 
 	for (int i = 0; i < n; i++) {
-		if (a[i] < 97) { *upper_size+=1; }
-		else { *lower_size+=1; }
+		if ((int)a[i] < 97) { *upper_size += 1; }
+		else { *lower_size += 1; }
 	}
 
 
-	char* upper = (char*)malloc(*upper_size);
-	char* lower = (char*)malloc(*lower_size);
+	char *upper = (char*)malloc(*upper_size);
+	char *lower = (char*)malloc(*lower_size);
 
 	for (int i = 0, l = 0, u = 0; i < n; i++) {
-		if (a[i] < 97 && lower != NULL) { lower[l] = a[i]; l++; printf("lower %c ", a[i]); }
-		else { upper[u] = a[i]; u++; }
+		if ((int)a[i] < 97 && upper != NULL) { 
+			upper[u] = a[i]; u++; 
+			printf("lower %c ", a[i]); 
+		}
+		else if (lower != NULL) { lower[l] = a[i]; l++; }
 	}
 
-	*lower_case = lower;
-	*upper_case = upper;
+	print_arr_char(a,n);
 
+	*upper_case = upper;
+	*lower_case = lower;
 }
+
+
+
+
+
+
+
 
 
