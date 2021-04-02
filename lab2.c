@@ -8,9 +8,9 @@ int* even_odd(int* a, int n, int **a_odd, int *p_even_size, int *p_odd_size);
 //Q2
 void split_by_uppercase(char* a, int n, char** lower_case, char** upper_case, int* lower_size, int* upper_size);
 //Q3
-int* RemoveDup_1(int *arr, int n, int *new_n);
-int RemoveDup_2(int *arr, int n, int **new_arr);
-void RemoveDup_3(int *arr, int n, int **new_arr, int *new_n);
+int* RemoveDup_1(int *a, int n, int *new_n);
+int RemoveDup_2(int *a, int n, int **new_a);
+void RemoveDup_3(int *a, int n, int **new_a, int *new_n);
 
 void lab2() {
 
@@ -68,19 +68,32 @@ void lab2() {
 
 	int arrQ3[10] = { 1,2,2,4,5,65,65,70,87,87 };
 
-	printf("\Origi array:\n");
+	printf("\Original array:\n");
 	print_arr(arrQ3, 10);
 
 	//Q3.1
 
 	int new_a1_size = 0;
-	int* new_a1 = Q3_1(arrQ3, 10, &new_a1_size);
+	int* new_a1 = RemoveDup_1(arrQ3, 10, &new_a1_size);
 
-	printf("\nNew array address: %p \n new array:\n", new_a1);
-	print_arr(new_a1, new_a1_size);
+	printf("\nQ3.1:");
+	printf("\nNew array address: %p \nNew array size: %d \nNew array: ", new_a1, new_a1_size);
+	if (new_a1 != NULL) print_arr(new_a1, new_a1_size);
+	else printf("Array is NULL.");
 
+	free(new_a1);
 
+	//Q3.2
 
+	int* new_a2 = NULL;
+	int new_a2_size = RemoveDup_2(arrQ3, 10, &new_a2);
+	printf("size %d",new_a2_size);
+	printf("\n\nQ3.2:");
+	printf("\nNew array address: %p \nNew array size: %d \nNew array: ", new_a2, new_a2_size);
+	if (new_a2 != NULL) print_arr(new_a2, new_a2_size);
+	else printf("Array is NULL.");
+
+	free(new_a2);
 }
 
 //Q1
@@ -137,26 +150,57 @@ void split_by_uppercase(char* a, int n, char** lower_case, char** upper_case, in
 //Q3
 int* RemoveDup_1(int* a, int n, int* new_n) {
 
-	for (int i = 1; i < n; i++) {
-		if (a[i] == a[i - 1]) *new_n+=1;
+	for (int i = 0; i < n; i++) {
+		if (i == n - 1) { *new_n += 1; break; }
+		if (a[i] != a[i + 1]) *new_n+=1;
 	}
 
 	int* no_dup = (int*)calloc(*new_n + 1, sizeof(int));
 
-	for (int i = 0, j = 0; i < n - 1; i++) {
+	for (int i = 0, j = 0; i < n; i++) {
 
+		if (no_dup != NULL && i == n - 1) {
+			no_dup[j] = a[i]; 
+			break;
+		}
 		if (no_dup != NULL && a[i] != a[i + 1])
 		{
 			no_dup[j] = a[i];
 			j++;
-			if (i == n - 2) no_dup[j] = a[i + 1];
 		}
 
-	};
+	}
 
+	return no_dup;
 }
 
+int RemoveDup_2(int* a, int n, int** new_a) {
 
+	int new_n = 0;
+
+	for (int i = 0; i < n; i++) { 
+		if (i == n - 1) { new_n += 1; break; }
+		if (a[i] != a[i + 1]) new_n += 1;
+	}
+
+	*new_a = (int*)calloc(new_n + 1, sizeof(int));
+
+	for (int i = 0, j = 0; i < n; i++) {
+
+		if (*new_a != NULL && i == n - 1) {
+			(*new_a)[j] = a[i];
+			break;
+		}
+		if (*new_a != NULL && a[i] != a[i + 1])
+		{
+			(*new_a)[j] = a[i];
+			j++;
+		}
+
+	}
+
+	return new_n;
+}
 
 
 
