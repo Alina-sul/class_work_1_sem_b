@@ -3,8 +3,14 @@
 #include <stdio.h>
 #define NUM 10
 
+//Q1
 int* even_odd(int* a, int n, int **a_odd, int *p_even_size, int *p_odd_size);
+//Q2
 void split_by_uppercase(char* a, int n, char** lower_case, char** upper_case, int* lower_size, int* upper_size);
+//Q3
+int* RemoveDup_1(int *arr, int n, int *new_n);
+int RemoveDup_2(int *arr, int n, int **new_arr);
+void RemoveDup_3(int *arr, int n, int **new_arr, int *new_n);
 
 void lab2() {
 
@@ -58,10 +64,26 @@ void lab2() {
 	free(lower_case);
 
 	//Q3
+	printf("\n\n****************************** Q3: \n\n");
+
+	int arrQ3[10] = { 1,2,2,4,5,65,65,70,87,87 };
+
+	printf("\Origi array:\n");
+	print_arr(arrQ3, 10);
+
+	//Q3.1
+
+	int new_a1_size = 0;
+	int* new_a1 = Q3_1(arrQ3, 10, &new_a1_size);
+
+	printf("\nNew array address: %p \n new array:\n", new_a1);
+	print_arr(new_a1, new_a1_size);
+
 
 
 }
 
+//Q1
 int* even_odd(int* a, int n, int** a_odd, int* p_even_size, int* p_odd_size) {
 
 	for (int i = 0; i < n; i++) {
@@ -86,6 +108,7 @@ int* even_odd(int* a, int n, int** a_odd, int* p_even_size, int* p_odd_size) {
 
 };
 
+//Q2
 void split_by_uppercase(char* a, int n, char** lower_case, char** upper_case, int* lower_size, int* upper_size) {
 
 	for (int i = 0; i < n; i++) {
@@ -109,6 +132,28 @@ void split_by_uppercase(char* a, int n, char** lower_case, char** upper_case, in
 
 	*upper_case = upper;
 	*lower_case = lower;
+}
+
+//Q3
+int* RemoveDup_1(int* a, int n, int* new_n) {
+
+	for (int i = 1; i < n; i++) {
+		if (a[i] == a[i - 1]) *new_n+=1;
+	}
+
+	int* no_dup = (int*)calloc(*new_n + 1, sizeof(int));
+
+	for (int i = 0, j = 0; i < n - 1; i++) {
+
+		if (no_dup != NULL && a[i] != a[i + 1])
+		{
+			no_dup[j] = a[i];
+			j++;
+			if (i == n - 2) no_dup[j] = a[i + 1];
+		}
+
+	};
+
 }
 
 
