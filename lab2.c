@@ -94,6 +94,22 @@ void lab2() {
 	else printf("Array is NULL.");
 
 	free(new_a2);
+
+	//Q3.3
+
+	int* new_a3 = NULL;
+	int new_a3_size = 0;
+		
+	RemoveDup_3(arrQ3, 10, &new_a3, &new_a3_size);
+	printf("size %d", new_a2_size);
+	printf("\n\nQ3.3:");
+	printf("\nNew array address: %p \nNew array size: %d \nNew array: ", new_a3, new_a3_size);
+	if (new_a3 != NULL) print_arr(new_a3, new_a3_size);
+	else printf("Array is NULL.");
+
+	free(new_a3);
+
+
 }
 
 //Q1
@@ -200,6 +216,31 @@ int RemoveDup_2(int* a, int n, int** new_a) {
 	}
 
 	return new_n;
+}
+
+void RemoveDup_3(int* a, int n, int** new_a, int* new_n) {
+
+	for (int i = 0; i < n; i++) {
+		if (i == n - 1) { *new_n += 1; break; }
+		if (a[i] != a[i + 1]) *new_n += 1;
+	}
+
+	*new_a = (int*)calloc(*new_n + 1, sizeof(int));
+
+	for (int i = 0, j = 0; i < n; i++) {
+
+		if (*new_a != NULL && i == n - 1) {
+			(*new_a)[j] = a[i];
+			break;
+		}
+		if (*new_a != NULL && a[i] != a[i + 1])
+		{
+			(*new_a)[j] = a[i];
+			j++;
+		}
+
+	}
+
 }
 
 
