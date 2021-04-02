@@ -57,6 +57,9 @@ void lab2() {
 	free(upper_case);
 	free(lower_case);
 
+	//Q3
+
+
 }
 
 int* even_odd(int* a, int n, int** a_odd, int* p_even_size, int* p_odd_size) {
