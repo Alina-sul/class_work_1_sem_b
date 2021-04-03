@@ -1,6 +1,8 @@
-#include "lab1.h","lab2.h"
+#include "lab1.h"
+#include "lab2.h"
+#include "lab3.h"
+#include "lab5.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 void main() {
 
@@ -15,6 +17,12 @@ void main() {
 			break;
 		case 2:
 			lab2();
+			break;
+		case 3:
+			lab3();
+			break;
+		case 5:
+			lab5();
 			break;
 		default: 
 			printf("No matching results found.\n");

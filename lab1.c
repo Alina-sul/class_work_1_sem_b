@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_arr(int a[], int n);
 //Q1
 void rebuiled_array_min(int* arr, int n);
 //Q2

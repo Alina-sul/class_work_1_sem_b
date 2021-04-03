@@ -1,7 +1,7 @@
 #include "lab2.h"
 #include "helpers.h" 
 #include <stdio.h>
-#define NUM 10
+#include <stdlib.h>
 
 //Q1
 int* even_odd(int* a, int n, int **a_odd, int *p_even_size, int *p_odd_size);

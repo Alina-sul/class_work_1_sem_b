@@ -1,4 +1,5 @@
 #include "helpers.h"
+#include <stdio.h>
 
 void print_arr(int *a, int n) {
 
